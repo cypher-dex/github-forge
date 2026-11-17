@@ -12,7 +12,8 @@ implemented on `node:zlib` and `node:crypto`.
 
 ## Layout
 
-- `main.ts`: the HTTP server, routing, and the make.fun trial lifecycle (register, poll, exit).
+- `main.ts`: the HTTP server and the make.fun trial lifecycle (register, poll, exit).
+- `src/router.ts` and `src/http.ts`: routing, auth and replies for every surface.
 - `src/git/`: object model (`objects.ts`), packfiles and deltas (`pack.ts`), pkt-lines (`pkt.ts`) and the
   smart HTTP protocol (`smart.ts`).
 - `src/store.ts`: repositories, refs, trees by path, merge bases, diffs and three-way tree merges.

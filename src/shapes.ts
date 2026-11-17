@@ -169,10 +169,10 @@ export function issueJson(origin: Origin, store: Store, repo: Repo, issue: Issue
   };
 }
 
-/** The serialized issue, memoized per origin until the issue next changes. */
-export function issueText(origin: Origin, store: Store, repo: Repo, issue: Issue): string {
+/** The serialized issue, memoized per origin until the issue next changes (the read workload's fast path). */
+export function issueBytes(origin: Origin, store: Store, repo: Repo, issue: Issue): Buffer {
   if (issue.cache === null || issue.cacheHost !== origin.web) {
-    issue.cache = JSON.stringify(issueJson(origin, store, repo, issue));
+    issue.cache = Buffer.from(JSON.stringify(issueJson(origin, store, repo, issue)), 'utf8');
     issue.cacheHost = origin.web;
   }
   return issue.cache;

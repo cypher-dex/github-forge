@@ -13,7 +13,7 @@ import {
   contentJson,
   gitCommitJson,
   issueJson,
-  issueText,
+  issueBytes,
   labelJson,
   pullJson,
   refJson,
@@ -178,7 +178,7 @@ function repoRoute(forge: Forge, req: RestRequest, repo: Repo, rest: string[]): 
     if (b === undefined) {
       if (method === 'GET') {
         const issue = repo.issues.get(number);
-        if (issue !== undefined) return { status: 200, headers: { 'Content-Type': JSON_TYPE }, body: issueText(origin, store, repo, issue) };
+        if (issue !== undefined) return { status: 200, headers: { 'Content-Type': JSON_TYPE }, body: issueBytes(origin, store, repo, issue) };
         if (repo.pulls.has(number)) return json(200, pullAsIssue(forge, req, repo, number));
         notFound();
       }

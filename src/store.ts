@@ -36,7 +36,7 @@ export interface Issue {
   updatedAt: number;
   closedAt: number | null;
   /** The serialized REST object and the host it was rendered for (the read workload's fast path). */
-  cache: string | null;
+  cache: Buffer | null;
   cacheHost: string;
 }
 
